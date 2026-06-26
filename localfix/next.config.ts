@@ -1,6 +1,6 @@
 const nextConfig = {
   eslint: { ignoreDuringBuilds: true },
   typescript: { ignoreBuildErrors: true },
-  // ...your existing config
+  output: "standalone",
+  experimental: { missingSuspenseWithCSRBailout: false },
 };
-export default nextConfig;
