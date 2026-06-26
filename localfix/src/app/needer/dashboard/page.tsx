@@ -3,6 +3,7 @@ export const dynamic = "force-dynamic";
 
 import type React from "react"
 import { useState, useEffect } from "react"
+import { useRef } from "react";
 import Link from "next/link"
 import { Search, MapPin, Star, Plus, User, Settings, LogOut, X, Camera, Zap } from "lucide-react"
 import { createProblem } from "./../../utils/api.js"
