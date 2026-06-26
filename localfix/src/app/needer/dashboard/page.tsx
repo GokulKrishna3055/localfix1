@@ -496,7 +496,7 @@ export default function NeederDashboard({neederId}: {neederId: string}) {
   }, [])
   const fetchUserIdByEmail = async (email: string) => {
     try {
-      const res = await fetch(`http://localhost:5000/users/by-email/${email}`)
+      const res = await fetch(`process.env.NEXT_PUBLIC_API_URL/users/by-email/${email}`)
       const data = await res.json()
       if (data.success && data.user?._id) {
         setNeederId(data.user._id)
@@ -510,7 +510,7 @@ export default function NeederDashboard({neederId}: {neederId: string}) {
   // Fetch recent problems
   const fetchNeederProblems = async (id: string) => {
     try {
-      const res = await fetch(`http://localhost:5000/problems/${id}`)
+      const res = await fetch(`process.env.NEXT_PUBLIC_API_URL/problems/${id}`)
       const data = await res.json()
       if (data.success) {
         setRecentProblems(data.problems)
