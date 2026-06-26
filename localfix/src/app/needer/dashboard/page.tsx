@@ -8,12 +8,12 @@ import Link from "next/link"
 import { Search, MapPin, Star, Plus, User, Settings, LogOut, X, Camera, Zap } from "lucide-react"
 import { createProblem } from "./../../utils/api.js"
 import { io } from "socket.io-client"
-import dynamic from "next/dynamic"
+import nextDynamic from "next/dynamic"
 
-const MapContainer = dynamic(() => import("react-leaflet").then(m => m.MapContainer), { ssr: false })
-const TileLayer = dynamic(() => import("react-leaflet").then(m => m.TileLayer), { ssr: false })
-const Marker = dynamic(() => import("react-leaflet").then(m => m.Marker), { ssr: false })
-const Popup = dynamic(() => import("react-leaflet").then(m => m.Popup), { ssr: false })
+const MapContainer = nextDynamic(() => import("react-leaflet").then(m => m.MapContainer), { ssr: false }) as React.ComponentType<any>
+const TileLayer = nextDynamic(() => import("react-leaflet").then(m => m.TileLayer), { ssr: false }) as React.ComponentType<any>
+const Marker = nextDynamic(() => import("react-leaflet").then(m => m.Marker), { ssr: false }) as React.ComponentType<any>
+const Popup = nextDynamic(() => import("react-leaflet").then(m => m.Popup), { ssr: false }) as React.ComponentType<any>
 
 
 export default function NeederDashboard({neederId}: {neederId: string}) {
