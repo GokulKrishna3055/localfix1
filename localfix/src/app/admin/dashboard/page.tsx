@@ -38,7 +38,7 @@ export default function AdminDashboard() {
   // Fetch providers from backend
   const fetchProviders = async () => {
     try {
-      const res = await axios.get("process.env.NEXT_PUBLIC_API_URL/admin/providers")
+      const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/admin/providers`)
       setProviders(res.data.data)
       setLoading(false)
     } catch (err) {
@@ -57,7 +57,7 @@ export default function AdminDashboard() {
   // Approve/Reject provider and remove from UI
   const handleAction = async (id, action) => {
     try {
-      await axios.patch(process.env.NEXT_PUBLIC_API_URL/admin/providers/${id}`, { action })
+      await axios.patch(`${process.env.NEXT_PUBLIC_API_URL}/admin/providers/${id}`, { action })
       setProviders((prev) => prev.filter((p) => p._id !== id))
     } catch (err) {
       console.error(`Error ${action} provider:`, err)
