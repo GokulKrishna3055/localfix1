@@ -6,6 +6,7 @@ import { ArrowLeft, Shield, RefreshCw } from "lucide-react"
 import { resendOtp, verifyOtp } from "../utils/api"
 import { useRouter } from "next/navigation"
 import { useSearchParams } from "next/navigation"
+export const dynamic = "force-dynamic";
 
 type Props = {
   email?: string
