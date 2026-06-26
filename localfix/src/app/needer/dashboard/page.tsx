@@ -8,14 +8,19 @@ import { Search, MapPin, Star, Plus, User, Settings, LogOut, X, Camera, Zap } fr
 import { createProblem } from "./../../utils/api.js"
 import { io } from "socket.io-client"
 import dynamic from "next/dynamic"
-import Userdb from "../../../../../server/models/User.js";
 
 const MapContainer = dynamic(() => import("react-leaflet").then(m => m.MapContainer), { ssr: false })
 const TileLayer = dynamic(() => import("react-leaflet").then(m => m.TileLayer), { ssr: false })
 const Marker = dynamic(() => import("react-leaflet").then(m => m.Marker), { ssr: false })
 const Popup = dynamic(() => import("react-leaflet").then(m => m.Popup), { ssr: false })
 
-const socket = io("http://localhost:5000");
+const socketRef = useRef<any>(null);
+
+useEffect(() => {
+  socketRef.current = io(process.env.NEXT_PUBLIC_API_URL!);
+
+  return () => socketRef.current?.disconnect();
+}, []);
 
 export default function NeederDashboard({neederId}: {neederId: string}) {
   const [searchQuery, setSearchQuery] = useState("")
@@ -67,7 +72,7 @@ export default function NeederDashboard({neederId}: {neederId: string}) {
       const data = await res.json()
       if (data.success && data.user?._id) {
         setNeederId(data.user._id)
-        fetchNeederProblems(neederId1 || data.user._id)
+        fetchNeederProblems(data.user._id)
       }
     } catch (err) {
       console.error("Failed to fetch userId:", err)
