@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import OTPVerification from "../../otp-verification/page";
 import { loginUser, registerUser } from "../../utils/api.js";
 import { ArrowLeft, Mail, Lock, Eye, EyeOff, Users } from "lucide-react";
+export const dynamic = "force-dynamic";
 
 export default function NeederLogin() {
   const [isLogin, setIsLogin] = useState(true);
