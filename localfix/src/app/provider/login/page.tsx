@@ -379,6 +379,7 @@
 // app/provider/login/page.tsx  (or wherever your file lives)
 // keep "use client" and same styling/classes — only behavior changed
 "use client";
+export const dynamic = "force-dynamic";
 
 import React, { useState } from "react";
 import Link from "next/link";
