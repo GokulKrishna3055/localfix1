@@ -14,7 +14,9 @@ const TileLayer = dynamic(() => import("react-leaflet").then(m => m.TileLayer), 
 const Marker = dynamic(() => import("react-leaflet").then(m => m.Marker), { ssr: false })
 const Popup = dynamic(() => import("react-leaflet").then(m => m.Popup), { ssr: false })
 
-const socketRef = useRef<any>(null);
+
+export default function NeederDashboard({neederId}: {neederId: string}) {
+  const socketRef = useRef<any>(null);
 
 useEffect(() => {
   socketRef.current = io(process.env.NEXT_PUBLIC_API_URL!);
@@ -22,7 +24,6 @@ useEffect(() => {
   return () => socketRef.current?.disconnect();
 }, []);
 
-export default function NeederDashboard({neederId}: {neederId: string}) {
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedCategory, setSelectedCategory] = useState("all")
   const [showServiceModal, setShowServiceModal] = useState(false)
