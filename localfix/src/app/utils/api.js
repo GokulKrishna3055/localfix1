@@ -1,6 +1,6 @@
 export const dynamic = "force-dynamic";
 
-export const API_URL = `${process.env.NEXT_PUBLIC_API_URL}`; // backend runs on port 5000
+export const API_URL = process.env.NEXT_PUBLIC_API_URL; // backend runs on port 5000
 
 // Example: register user
 export async function registerUser(providerData) {
